@@ -1,19 +1,21 @@
 $(document).ready(function() {
 
-  var API_KEY;
+  const API_KEY = 'unsecure';
 
-  $.ajax({
-      url: `https://fyre-tech-test.herokuapp.com/auth`,
-      type: 'GET',
-      success: function(res) {
-        //set document to data
-        //console.log(res);
-        $('.auth_div').html(res);
-      }
-  }).then(function() {
-    API_KEY = document.querySelector('.auth').innerText;
-    //API_KEY = $('.auth').innerText;
-  });
+  // var API_KEY;
+  //
+  // $.ajax({
+  //     url: `https://fyre-tech-test.herokuapp.com/auth`,
+  //     type: 'GET',
+  //     success: function(res) {
+  //       //set document to data
+  //       //console.log(res);
+  //       $('.auth_div').html(res);
+  //     }
+  // }).then(function() {
+  //   API_KEY = document.querySelector('.auth').innerText;
+  //   //API_KEY = $('.auth').innerText;
+  // });
 
 
   var $userInput;
