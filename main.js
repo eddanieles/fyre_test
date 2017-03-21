@@ -1,15 +1,19 @@
 $(document).ready(function() {
 
-  const API_KEY = 'unsecure'//1490038312163;
+  var API_KEY;
 
-  // $.ajax({
-  //     url: `https://fyre-tech-test.herokuapp.com/person?userid=4532&auth=${API_KEY}`,
-  //     type: 'GET',
-  //     success: function(res) {
-  //       //set document to data
-  //       //console.log(res.data);
-  //     }
-  // });
+  $.ajax({
+      url: `https://fyre-tech-test.herokuapp.com/auth`,
+      type: 'GET',
+      success: function(res) {
+        //set document to data
+        //console.log(res);
+        $('.auth_div').html(res);
+      }
+  }).then(function() {
+    API_KEY = document.querySelector('.auth').innerText;
+    //API_KEY = $('.auth').innerText;
+  });
 
 
   var $userInput;
@@ -25,7 +29,7 @@ $(document).ready(function() {
         url: `https://fyre-tech-test.herokuapp.com/person?userid=${$userInput}&auth=${API_KEY}`,
         type: 'GET',
         success: function(res) {
-          //console.log(res.data);
+          //console.log(res);
           userObj = {
             active: res.data.status,
             currentSalary: '',
@@ -59,7 +63,7 @@ $(document).ready(function() {
           contentType: 'application/json; charset=UTF-8',
           data: JSON.stringify(userObj),
           success: function(res) {
-            console.log(res.data);
+            console.log(res);
             $('.candidate_list').prepend(`
               <li>
               <p>ID: ${res.data.externalId}</p>
